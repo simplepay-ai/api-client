@@ -10,7 +10,7 @@ export default class CryptocurrencyService extends BaseService {
     public async list(request: CryptocurrencyListRequest = {}): Promise<Cryptocurrency[]> {
         const query = new URLSearchParams();
 
-        for (const [key, value] of Object.entries(request)) {
+        for (const [key, value] of Object.entries(this.toSnakeCase(request))) {
             query.append(key, value.toString());
         }
 

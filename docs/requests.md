@@ -2,10 +2,11 @@
 
 ## `CryptocurrencyListRequest`
 
-| Field      | Type                     | Example | Default | Description                              |
-| :--------- | :----------------------- | :------ | :------ | :--------------------------------------- |
-| `rates`    | `boolean` or `undefined` | `true`  | `false` | Include cryptocurrency rates in response |
-| `networks` | `boolean` or `undefined` | `true`  | `false` | Include networks list in response        |
+| Field      | Type                     | Example                                | Default | Description                                 |
+| :--------- | :----------------------- | :------------------------------------- | :------ | :------------------------------------------ |
+| `appId`    | `string` or `undefined`  | `db50e5fc-1b91-49c4-8b6a-d33a44ffdda5` |         | Return cryptocurrencies for specific App ID |
+| `rates`    | `boolean` or `undefined` | `true`                                 | `false` | Include cryptocurrency rates in response    |
+| `networks` | `boolean` or `undefined` | `true`                                 | `false` | Include networks list in response           |
 
 ## `InvoiceCreateRequest`
 
