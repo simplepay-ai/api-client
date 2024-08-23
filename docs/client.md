@@ -66,20 +66,20 @@ All other API methods may be called in similar way
 
 ### Fiat currencies
 
-| Method | Arguments | Return value | Description |
-| :-- | :-- | :-- | :-- |
-| `currency.list` | none | [`Promise<Currency[]>`](entities.md#currency) | Get fiat currency list |
+| Method          | Arguments | Return value                                  | Description            |
+| :-------------- | :-------- | :-------------------------------------------- | :--------------------- |
+| `currency.list` | none      | [`Promise<Currency[]>`](entities.md#currency) | Get fiat currency list |
 
 ### Cryptocurrencies
 
-| Method | Arguments | Return value | Description |
-| :-- | :-- | :-- | :-- |
+| Method                | Arguments                                                            | Return value                                              | Description             |
+| :-------------------- | :------------------------------------------------------------------- | :-------------------------------------------------------- | :---------------------- |
 | `cryptocurrency.list` | [`CryptocurrencyListRequest`](requests.md#cryptocurrencylistrequest) | [`Promise<Cryptocurrency[]>`](entities.md#cryptocurrency) | Get cryptocurrency list |
 
 ### Invoices
 
-| Method | Arguments | Return value | Description |
-| :-- | :-- | :-- | :-- |
-| `invoice.create` | [`InvoiceCreateRequest`](requests.md#invoicecreaterequest) | [`Promise<Invoice>`](entities.md#invoice) | Create new invoice |
-| `invoice.get` | `string` Invoice ID | [`Promise<Invoice>`](entities.md#invoice) | Get invoice by ID |
-| `invoice.cancel` | `string` Invoice ID | [`Promise<Invoice>`](entities.md#invoice) | Cancel invoice by ID |
+| Method           | Arguments                                                  | Return value                              | Description          |
+| :--------------- | :--------------------------------------------------------- | :---------------------------------------- | :------------------- |
+| `invoice.create` | [`InvoiceCreateRequest`](requests.md#invoicecreaterequest) | [`Promise<Invoice>`](entities.md#invoice) | Create new invoice   |
+| `invoice.get`    | `string` Invoice ID                                        | [`Promise<Invoice>`](entities.md#invoice) | Get invoice by ID    |
+| `invoice.cancel` | `string` Invoice ID                                        | [`Promise<Invoice>`](entities.md#invoice) | Cancel invoice by ID |
