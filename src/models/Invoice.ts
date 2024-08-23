@@ -1,5 +1,15 @@
 import { Cryptocurrency, Currency, Network } from './';
 
+export enum InvoiceStatus {
+    Created = 'created',
+    Processing = 'processing',
+    Confirming = 'confirming',
+    Success = 'success',
+    Rejected = 'rejected',
+    Cancelled = 'cancelled',
+    Expired = 'expired'
+}
+
 export default interface Invoice {
     /**
      * Invoice ID
@@ -62,7 +72,7 @@ export default interface Invoice {
      *
      * @example 'success'
      */
-    status: 'created' | 'processing' | 'confirming' | 'success' | 'rejected' | 'cancelled';
+    status: InvoiceStatus;
 
     /**
      * Transaction hash

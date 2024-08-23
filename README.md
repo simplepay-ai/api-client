@@ -22,6 +22,8 @@ npm install --save-dev @simple-technologies-llc/api-client
 
 ### 4. Create Client and make API calls
 
+#### Invoice creation example
+
 ```typescript
 import {
     Client,
@@ -71,6 +73,29 @@ try {
         console.log(error.code);
     }
 }
+```
+
+#### Subscription to invoice updates example
+
+```typescript
+import { InvoiceStatus, WsClient } from '@simple-technologies-llc/api-client';
+
+const ws = new WsClient();
+
+// Invoice ID, returned by api.invoice.create() method
+const invoiceId = '6ef3cc15-24ae-4192-9744-a9017ed153cc';
+
+const invoice = ws.invoice(invoiceId);
+
+invoice.on(InvoiceStatus.Confirming, (invoice) => {
+    // Invoice paid, and awaiting confirmation in blockchain
+    console.log(invoice);
+});
+
+invoice.on(InvoiceStatus.Success, (invoice) => {
+    // Invoice successfully paid
+    console.log(invoice);
+});
 ```
 
 ## Development

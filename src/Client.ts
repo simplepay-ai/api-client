@@ -3,6 +3,7 @@ import { CryptocurrencyService, CurrencyService, InvoiceService } from './servic
 export interface ClientOptions {
     /**
      * API base
+     *
      * @default 'https://api.simplepay.ai'
      */
     apiBase?: string;
