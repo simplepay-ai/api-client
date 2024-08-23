@@ -1,5 +1,9 @@
 import type { Network } from './';
 
+export interface CryptocurrencyRates {
+    [key: string]: number;
+}
+
 export default interface Cryptocurrency {
     /**
      * Cryptocurrency ID
@@ -9,7 +13,7 @@ export default interface Cryptocurrency {
     id: string;
 
     /**
-     * Cryptocurrency Symbol
+     * Cryptocurrency symbol
      *
      * @example 'USDT'
      */
@@ -47,7 +51,5 @@ export default interface Cryptocurrency {
      * }
      * @see https://en.wikipedia.org/wiki/ISO_4217
      */
-    rates?: {
-        [key: string]: number;
-    };
+    rates?: CryptocurrencyRates;
 }

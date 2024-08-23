@@ -25,6 +25,9 @@ export class WsClient {
         });
     }
 
+    /**
+     * Subscribe to invoice by ID
+     */
     public invoice(id: string) {
         return new InvoiceChannel(this.pusher.subscribe(`invoice.${id}`));
     }
