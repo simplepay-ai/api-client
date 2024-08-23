@@ -13,7 +13,7 @@ export interface WsClientOptions {
 export class WsClient {
     private pusher: Pusher;
 
-    constructor(options: WsClientOptions) {
+    constructor(options: WsClientOptions = {}) {
         const wsHost = options.wsHost || 'ws.simplepay.ai';
 
         this.pusher = new Pusher('simplepay', {

@@ -23,7 +23,7 @@ export class Client {
     private cryptocurrencyService: CryptocurrencyService;
     private invoiceService: InvoiceService;
 
-    constructor(options: ClientOptions) {
+    constructor(options: ClientOptions = {}) {
         const apiBase = options.apiBase || 'https://api.simplepay.ai';
 
         this.currencyService = new CurrencyService(`${apiBase}/currency`);

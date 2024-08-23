@@ -6,7 +6,7 @@ export enum InvoiceStatus {
     Confirming = 'confirming',
     Success = 'success',
     Rejected = 'rejected',
-    Cancelled = 'cancelled',
+    Canceled = 'canceled',
     Expired = 'expired'
 }
 
