@@ -1,5 +1,6 @@
 import type { Invoice } from '../models';
 import type { InvoiceCreateErrors, InvoiceCreateRequest } from '../requests';
+import { createHmac } from 'crypto';
 import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
 import { HttpError, ValidationError } from '../errors';
@@ -52,5 +53,27 @@ export default class InvoiceService extends BaseService {
         const data = await response.json();
 
         return this.toCamelCase(data) as Invoice;
+    }
+
+    /**
+     * Get invoice from webhook
+     *
+     * @param body Raw webhook body
+     * @param signature Content of `X-Signature` header
+     */
+    public fromWebhook(body: string, signature: string): Invoice {
+        if (this.apiKey === null) {
+            throw new Error('API key not set');
+        }
+
+        const hash = createHmac('sha256', this.apiKey).update(body).digest('hex');
+
+        if (hash !== signature) {
+            throw new Error('Invalid signature');
+        }
+
+        const data = this.toCamelCase(JSON.parse(body));
+
+        return data as Invoice;
     }
 }

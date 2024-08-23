@@ -78,8 +78,9 @@ All other API methods may be called in similar way
 
 ### Invoices
 
-| Method           | Arguments                                                  | Return value                              | Description          |
-| :--------------- | :--------------------------------------------------------- | :---------------------------------------- | :------------------- |
-| `invoice.create` | [`InvoiceCreateRequest`](requests.md#invoicecreaterequest) | [`Promise<Invoice>`](entities.md#invoice) | Create new invoice   |
-| `invoice.get`    | `string` Invoice ID                                        | [`Promise<Invoice>`](entities.md#invoice) | Get invoice by ID    |
-| `invoice.cancel` | `string` Invoice ID                                        | [`Promise<Invoice>`](entities.md#invoice) | Cancel invoice by ID |
+| Method                | Arguments                                                       | Return value                              | Description              |
+| :-------------------- | :-------------------------------------------------------------- | :---------------------------------------- | :----------------------- |
+| `invoice.create`      | [`InvoiceCreateRequest`](requests.md#invoicecreaterequest)      | [`Promise<Invoice>`](entities.md#invoice) | Create new invoice       |
+| `invoice.get`         | `string` Invoice ID                                             | [`Promise<Invoice>`](entities.md#invoice) | Get invoice by ID        |
+| `invoice.cancel`      | `string` Invoice ID                                             | [`Promise<Invoice>`](entities.md#invoice) | Cancel invoice by ID     |
+| `invoice.fromWebhook` | `string` Webhook body, `string` Content of `X-Signature` header | [`Invoice`](entities.md#invoice)          | Get invoice from webhook |
