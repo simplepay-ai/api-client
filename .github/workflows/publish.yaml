@@ -18,9 +18,10 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
-          scope: '@simplepay-ai'
       - run: npm install
       - run: npm run build
+      - run: |
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
       - name: Publish to NPM
         run: npm publish
         env:
