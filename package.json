@@ -1,5 +1,5 @@
 {
-    "name": "@simple-technologies-llc/api-client",
+    "name": "@simplepay-ai/api-client",
     "version": "0.0.6",
     "type": "module",
     "main": "dist/index.js",
@@ -15,7 +15,7 @@
         "format": "prettier --write ."
     },
     "author": "",
-    "license": "UNLICENSED",
+    "license": "MIT",
     "description": "",
     "dependencies": {
         "camelcase-keys": "^9.1.3",

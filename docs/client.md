@@ -10,7 +10,7 @@ import {
     HttpError,
     InvoiceCreateErrors,
     ValidationError
-} from '@simple-technologies-llc/api-client';
+} from '@simplepay-ai/api-client';
 
 const api = new Client({
     apiKey: '<place your API key here>'

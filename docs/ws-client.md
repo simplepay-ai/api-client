@@ -5,7 +5,7 @@
 Below is example of `WsClient` initialization and subscription to invoice updates
 
 ```typescript
-import { InvoiceStatus, WsClient } from '@simple-technologies-llc/api-client';
+import { InvoiceStatus, WsClient } from '@simplepay-ai/api-client';
 
 const ws = new WsClient();
 

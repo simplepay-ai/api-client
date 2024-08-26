@@ -7,7 +7,7 @@
 Add following line to `.npmrc` in project root directory:
 
 ```text
-@simple-technologies-llc:registry=https://npm.pkg.github.com
+@simplepay-ai:registry=https://npm.pkg.github.com
 ```
 
 ### 2. Authenticate in GitHub Packages
@@ -17,7 +17,7 @@ Read [this guide](https://docs.github.com/en/packages/working-with-a-github-pack
 ### 3. Install package as usual
 
 ```bash
-npm install --save-dev @simple-technologies-llc/api-client
+npm install --save-dev @simplepay-ai/api-client
 ```
 
 ### 4. Use `Client` or `WsClient` classes from package
