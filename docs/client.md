@@ -5,12 +5,7 @@
 Below is example of `Client` initialization and invoice creation
 
 ```typescript
-import {
-    Client,
-    HttpError,
-    InvoiceCreateErrors,
-    ValidationError
-} from '@simplepay-ai/api-client';
+import { Client, HttpError, InvoiceCreateErrors, ValidationError } from '@simplepay-ai/api-client';
 
 const api = new Client({
     apiKey: '<place your API key here>'

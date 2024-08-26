@@ -2,25 +2,13 @@
 
 ## Usage
 
-### 1. Reference organization namespace in project
-
-Add following line to `.npmrc` in project root directory:
-
-```text
-@simplepay-ai:registry=https://npm.pkg.github.com
-```
-
-### 2. Authenticate in GitHub Packages
-
-Read [this guide](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token) about how to authenticate
-
-### 3. Install package as usual
+### 1. Install package
 
 ```bash
 npm install --save-dev @simplepay-ai/api-client
 ```
 
-### 4. Use `Client` or `WsClient` classes from package
+### 2. Use `Client` or `WsClient` classes from package
 
 See documentation for [`Client`](docs/client.md) or [`WsClient`](docs/ws-client.md)
 

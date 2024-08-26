@@ -19,9 +19,13 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
+      - run: npm publish (NPM)
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: |
+          echo '@simplepay-ai:registry=https://npm.pkg.github.com' >> .npmrc
           echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> .npmrc
-      - run: npm publish
+      - run: npm publish (GitHub)
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create release
