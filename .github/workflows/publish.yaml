@@ -23,14 +23,14 @@ jobs:
       - run: |
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
       - name: Publish to NPM
-        run: npm publish
+        run: npm publish --access public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: |
           echo '@simplepay-ai:registry=https://npm.pkg.github.com' >> .npmrc
           echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> .npmrc
       - name: Publish to GitHub
-        run: npm publish
+        run: npm publish --access public
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create release
