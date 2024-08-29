@@ -70,3 +70,4 @@ Blockchain network
 | `cryptocurrency` | [`Cryptocurrency`](#cryptocurrency) | See [`Cryptocurrency`](#cryptocurrency)                              | Invoice cryptocurrency                          |
 | `network`        | [`Network`](#network)               | See [`Network`](#network)                                            | Invoice network                                 |
 | `currency`       | [`Currency`](#currency)             | See [`Currency`](#currency)                                          | Invoice fiat currency                           |
+| `payload`        | `InvoicePayload` or `null`          | `{ someKey: 'someValue' }`                                           | Custom data attached to invoice                 |

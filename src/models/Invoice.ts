@@ -1,13 +1,58 @@
 import { Cryptocurrency, Currency, Network } from './';
 
 export enum InvoiceStatus {
+    /**
+     * Invoice created and preparing for future processing
+     */
     Created = 'created',
+
+    /**
+     * System is ready for accepting payment
+     *
+     * End customer allowed to send cryptocurrency
+     */
     Processing = 'processing',
+
+    /**
+     * Transaction found in blockchain
+     *
+     * System awaiting for some amount of new blocks to be mined for safety
+     *
+     * `txHash` and `txBlock` fields in invoice was filled on this status
+     */
     Confirming = 'confirming',
+
+    /**
+     * Invoice succeeded
+     *
+     * Paid service may be granted to end customer on this status
+     */
     Success = 'success',
+
+    /**
+     * Invoice rejected
+     *
+     * Transaction was failed, or another issue was happen
+     */
     Rejected = 'rejected',
+
+    /**
+     * Invoice canceled
+     *
+     * By end customer or merchant
+     */
     Canceled = 'canceled',
+
+    /**
+     * Invoice expired
+     *
+     * End customer does not send transaction in time
+     */
     Expired = 'expired'
+}
+
+export interface InvoicePayload {
+    [key: string]: any;
 }
 
 export default interface Invoice {
@@ -123,4 +168,13 @@ export default interface Invoice {
      * Invoice fiat currency
      */
     currency: Currency;
+
+    /**
+     * Custom data attached to invoice
+     *
+     * @example {
+     *   someKey: 'someValue'
+     * }
+     */
+    payload: InvoicePayload | null;
 }

@@ -7,7 +7,7 @@ import { HttpError, ValidationError } from '../errors';
 
 export default class InvoiceService extends BaseService {
     /**
-     * Create new invoice
+     * Create invoice
      */
     public async create(request: InvoiceCreateRequest): Promise<Invoice> {
         const response = await this.request('POST', null, this.toSnakeCase(request));

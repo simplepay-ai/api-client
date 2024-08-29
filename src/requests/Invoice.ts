@@ -1,3 +1,5 @@
+import type { InvoicePayload } from '../models';
+
 export type InvoiceCreateRequest = {
     /**
      * Invoice type
@@ -11,7 +13,7 @@ export type InvoiceCreateRequest = {
      *
      * @example 'dd90187e-d1d0-405f-bf2f-242c15403297'
      */
-    parentId: string | null;
+    parentId?: string | null;
 
     /**
      * ID of end customer, who makes the payment
@@ -55,6 +57,15 @@ export type InvoiceCreateRequest = {
      * @example 500
      */
     price: number;
+
+    /**
+     * Custom data attached to invoice
+     *
+     * @example {
+     *   someKey: 'someValue'
+     * }
+     */
+    payload?: InvoicePayload | null;
 };
 
 export type InvoiceCreateErrors = {
@@ -66,4 +77,5 @@ export type InvoiceCreateErrors = {
     network?: 'required' | 'alpha' | 'lowercase' | 'invalid';
     currency?: 'required' | 'alpha' | 'uppercase' | 'invalid';
     price?: 'required' | 'numeric' | 'gte' | 'lte';
+    payload?: 'len';
 };
