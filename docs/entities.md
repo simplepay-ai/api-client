@@ -16,6 +16,7 @@ Fiat currency
 | :--------- | :----------------------------------------------------------- | :------------------------------------------------ | :---------------------------------------------------------- |
 | `id`       | `string`                                                     | `4967cf90-ce74-4edf-9b4e-f6392de1c95a`            | Cryptocurrency ID                                           |
 | `symbol`   | `string`                                                     | `USDT`                                            | Cryptocurrency symbol                                       |
+| `name`     | `string`                                                     | `Tether`                                          | Cryptocurrency name                                         |
 | `decimals` | `number`                                                     | `18`                                              | Number of decimal places                                    |
 | `stable`   | `boolean`                                                    | `true`                                            | Is stablecoin                                               |
 | `networks` | [`Network[]`](#network) or `undefined`                       | See [`Network`](#network)                         | List of blockchains in which cryptocurrency may be accepted |

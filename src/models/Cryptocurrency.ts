@@ -20,6 +20,13 @@ export default interface Cryptocurrency {
     symbol: string;
 
     /**
+     * Cryptocurrency name
+     *
+     * @example 'Tether'
+     */
+    name: string;
+
+    /**
      * Number of decimal places
      *
      * @example 18
