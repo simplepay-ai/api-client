@@ -22,7 +22,7 @@ export type CryptocurrencyListRequest = {
 };
 
 export type CryptocurrencyListErrors = {
-    appId?: 'uuid';
+    appId?: 'uuid4';
     rates?: 'boolean';
     networks?: 'boolean';
 };
