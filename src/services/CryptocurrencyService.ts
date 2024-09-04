@@ -1,7 +1,8 @@
 import type { Cryptocurrency } from '../models';
-import type { CryptocurrencyListRequest } from '../requests';
+import type { CryptocurrencyListErrors, CryptocurrencyListRequest } from '../requests';
+import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
-import { HttpError } from '../errors';
+import { HttpError, ValidationError } from '../errors';
 
 export default class CryptocurrencyService extends BaseService {
     /**
@@ -16,12 +17,16 @@ export default class CryptocurrencyService extends BaseService {
 
         const response = await this.request('GET', `?${query.toString()}`);
 
-        if (!response.ok) {
+        if (!response.ok && response.status !== StatusCodes.BAD_REQUEST) {
             throw new HttpError(response.status);
         }
 
-        const data = await response.json();
+        const data = this.toCamelCase(await response.json());
 
-        return this.toCamelCase(data) as Cryptocurrency[];
+        if (response.status === StatusCodes.BAD_REQUEST) {
+            throw new ValidationError<CryptocurrencyListErrors>(data);
+        }
+
+        return data as Cryptocurrency[];
     }
 }

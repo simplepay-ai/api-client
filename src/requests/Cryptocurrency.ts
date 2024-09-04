@@ -20,3 +20,9 @@ export type CryptocurrencyListRequest = {
      */
     networks?: boolean;
 };
+
+export type CryptocurrencyListErrors = {
+    appId?: 'uuid';
+    rates?: 'boolean';
+    networks?: 'boolean';
+};
