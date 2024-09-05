@@ -2,6 +2,13 @@ import type { InvoicePayload } from '../models';
 
 export type InvoiceCreateRequest = {
     /**
+     * Application ID
+     *
+     * @example 'deae9fe3-9f00-4c18-8b24-dbc86e142128'
+     */
+    appId: string;
+
+    /**
      * Invoice type
      *
      * @example 'payment'
@@ -69,6 +76,7 @@ export type InvoiceCreateRequest = {
 };
 
 export type InvoiceCreateErrors = {
+    appId?: 'required' | 'uuid4' | 'invalid';
     type?: 'required' | 'oneof';
     parentId?: 'uuid4';
     clientId?: 'required' | 'uuid4';
