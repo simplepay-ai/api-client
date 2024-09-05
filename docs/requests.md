@@ -12,6 +12,7 @@
 
 | Field            | Type               | Example                                      | Default | Description                                                                               |
 | :--------------- | :----------------- | :------------------------------------------- | :------ | :---------------------------------------------------------------------------------------- |
+| `appId`          | `string`           | `deae9fe3-9f00-4c18-8b24-dbc86e142128`       |         | Application ID                                                                            |
 | `type`           | `enum<payment>`    | `payment`                                    |         | Invoice type                                                                              |
 | `parentId`       | `string` or `null` | `dd90187e-d1d0-405f-bf2f-242c15403297`       | `null`  | Parent invoice ID                                                                         |
 | `clientId`       | `string`           | `46778124-f9e0-4eba-ae1a-ecd5c0d9e90b`       |         | ID of end customer, who makes the payment                                                 |

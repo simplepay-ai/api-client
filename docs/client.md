@@ -13,6 +13,9 @@ const api = new Client({
 
 try {
     const invoice = await api.invoice.create({
+        // Application ID from console
+        appId: '<place your App ID here>',
+
         type: 'payment',
 
         // ID of end customer, who makes the payment
