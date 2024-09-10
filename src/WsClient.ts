@@ -1,5 +1,5 @@
 import Pusher from 'pusher-js';
-import { InvoiceChannel } from './channels';
+import { AppClientInvoiceChannel, InvoiceChannel } from './channels';
 
 export interface WsClientOptions {
     /**
@@ -26,9 +26,20 @@ export class WsClient {
     }
 
     /**
+     * Subscribe to invoices by App ID and Client ID
+     */
+    public appClientInvoice(appId: string, clientId: string) {
+        const channel = this.pusher.subscribe(`app.${appId}.client.${clientId}.invoice`);
+
+        return new AppClientInvoiceChannel(channel);
+    }
+
+    /**
      * Subscribe to invoice by ID
      */
     public invoice(id: string) {
-        return new InvoiceChannel(this.pusher.subscribe(`invoice.${id}`));
+        const channel = this.pusher.subscribe(`invoice.${id}`);
+
+        return new InvoiceChannel(channel);
     }
 }

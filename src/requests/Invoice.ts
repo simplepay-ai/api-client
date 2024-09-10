@@ -79,7 +79,7 @@ export type InvoiceCreateErrors = {
     appId?: 'required' | 'uuid4' | 'invalid';
     type?: 'required' | 'oneof';
     parentId?: 'uuid4';
-    clientId?: 'required' | 'uuid4';
+    clientId?: 'required' | 'ascii' | 'max' | 'invalid';
     from?: 'required' | 'alphanum' | 'invalid';
     cryptocurrency?: 'required' | 'alpha' | 'uppercase' | 'invalid';
     network?: 'required' | 'alpha' | 'lowercase' | 'invalid';
