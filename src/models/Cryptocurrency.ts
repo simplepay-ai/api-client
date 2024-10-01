@@ -1,4 +1,4 @@
-import type { Network } from './index';
+import type { Network } from './';
 
 export interface CryptocurrencyRates {
     [key: string]: number;

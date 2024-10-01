@@ -1,5 +1,5 @@
 import Pusher from 'pusher-js';
-import { AppClientInvoiceChannel, InvoiceChannel } from './channels/index';
+import { AppClientInvoiceChannel, InvoiceChannel } from './channels';
 
 export interface WsClientOptions {
     /**
