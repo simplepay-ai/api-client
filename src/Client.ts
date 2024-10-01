@@ -1,4 +1,4 @@
-import { CryptocurrencyService, CurrencyService, InvoiceService } from './services';
+import { CryptocurrencyService, CurrencyService, InvoiceService } from './services/index';
 
 export interface ClientOptions {
     /**

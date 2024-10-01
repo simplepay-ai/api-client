@@ -1,6 +1,6 @@
-import type { Currency } from '../models';
+import type { Currency } from '../models/index';
 import BaseService from '../BaseService';
-import { HttpError } from '../errors';
+import { HttpError } from '../errors/index';
 
 export default class CurrencyService extends BaseService {
     /**

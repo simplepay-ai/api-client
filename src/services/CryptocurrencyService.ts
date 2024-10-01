@@ -1,8 +1,8 @@
-import type { Cryptocurrency } from '../models';
-import type { CryptocurrencyListErrors, CryptocurrencyListRequest } from '../requests';
+import type { Cryptocurrency } from '../models/index';
+import type { CryptocurrencyListErrors, CryptocurrencyListRequest } from '../requests/index';
 import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
-import { HttpError, ValidationError } from '../errors';
+import { HttpError, ValidationError } from '../errors/index';
 
 export default class CryptocurrencyService extends BaseService {
     /**

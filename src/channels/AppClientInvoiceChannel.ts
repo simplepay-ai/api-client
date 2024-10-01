@@ -1,6 +1,6 @@
-import type { Invoice } from '../models';
+import type { Invoice } from '../models/index';
 import BaseChannel from '../BaseChannel';
-import { InvoiceStatus } from '../models';
+import { InvoiceStatus } from '../models/index';
 
 export default class AppClientInvoiceChannel extends BaseChannel {
     public on(status: InvoiceStatus, callback: (invoice: Invoice) => void): void {

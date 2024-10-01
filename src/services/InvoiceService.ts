@@ -1,9 +1,9 @@
-import type { Invoice } from '../models';
-import type { InvoiceCreateErrors, InvoiceCreateRequest } from '../requests';
+import type { Invoice } from '../models/index';
+import type { InvoiceCreateErrors, InvoiceCreateRequest } from '../requests/index';
 import { createHmac } from 'crypto';
 import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
-import { HttpError, ValidationError } from '../errors';
+import { HttpError, ValidationError } from '../errors/index';
 
 export default class InvoiceService extends BaseService {
     /**

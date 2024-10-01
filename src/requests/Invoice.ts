@@ -1,4 +1,4 @@
-import type { InvoicePayload } from '../models';
+import type { InvoicePayload } from '../models/index';
 
 export type InvoiceCreateRequest = {
     /**
