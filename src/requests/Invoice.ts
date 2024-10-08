@@ -1,5 +1,21 @@
 import type { InvoicePayload } from '../models';
 
+export type InvoiceCreateProduct = {
+    /**
+     * Product ID
+     *
+     * @example '769f2cf4-0fa2-4f06-a22a-06525ec489a8'
+     */
+    id: string;
+
+    /**
+     * Products count
+     *
+     * @example 1
+     */
+    count: number;
+};
+
 export type InvoiceCreateRequest = {
     /**
      * Application ID
@@ -63,7 +79,7 @@ export type InvoiceCreateRequest = {
      *
      * @example 500
      */
-    price: number;
+    price?: number;
 
     /**
      * Custom data attached to invoice
@@ -73,6 +89,11 @@ export type InvoiceCreateRequest = {
      * }
      */
     payload?: InvoicePayload | null;
+
+    /**
+     * Products
+     */
+    products?: InvoiceCreateProduct[];
 };
 
 export type InvoiceCreateErrors = {
@@ -84,6 +105,7 @@ export type InvoiceCreateErrors = {
     cryptocurrency?: 'required' | 'alpha' | 'uppercase' | 'invalid';
     network?: 'required' | 'alpha' | 'lowercase' | 'invalid';
     currency?: 'required' | 'alpha' | 'uppercase' | 'invalid';
-    price?: 'required' | 'numeric' | 'gte' | 'lte';
+    price?: 'required_without' | 'numeric' | 'gte' | 'lte';
     payload?: 'len';
+    products?: 'required_without' | 'min' | 'max' | 'invalid';
 };

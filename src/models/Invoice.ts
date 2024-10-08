@@ -1,4 +1,4 @@
-import { Cryptocurrency, Currency, Network } from './';
+import { Cryptocurrency, Currency, Network, Product } from './';
 
 export enum InvoiceStatus {
     /**
@@ -53,6 +53,20 @@ export enum InvoiceStatus {
 
 export interface InvoicePayload {
     [key: string]: any;
+}
+
+export interface InvoiceProduct {
+    /**
+     * Product
+     */
+    product: Product;
+
+    /**
+     * Count
+     *
+     * @example 1
+     */
+    count: number;
 }
 
 export default interface Invoice {
@@ -177,4 +191,9 @@ export default interface Invoice {
      * }
      */
     payload: InvoicePayload | null;
+
+    /**
+     * Invoice products
+     */
+    products: InvoiceProduct[];
 }
