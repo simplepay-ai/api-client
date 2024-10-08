@@ -1,4 +1,4 @@
-import { CryptocurrencyService, CurrencyService, InvoiceService } from './services';
+import { CryptocurrencyService, CurrencyService, InvoiceService, ProductService } from './services';
 
 export interface ClientOptions {
     /**
@@ -19,36 +19,32 @@ export interface ClientOptions {
 }
 
 export class Client {
-    private currencyService: CurrencyService;
-    private cryptocurrencyService: CryptocurrencyService;
-    private invoiceService: InvoiceService;
-
-    constructor(options: ClientOptions = {}) {
-        const apiBase = options.apiBase || 'https://api.simplepay.ai';
-
-        this.currencyService = new CurrencyService(`${apiBase}/currency`);
-        this.cryptocurrencyService = new CryptocurrencyService(`${apiBase}/cryptocurrency`);
-        this.invoiceService = new InvoiceService(`${apiBase}/invoice`, options.apiKey);
-    }
-
     /**
      * Fiat currency API
      */
-    public get currency() {
-        return this.currencyService;
-    }
+    public currency: CurrencyService;
 
     /**
      * Cryptocurrency API
      */
-    public get cryptocurrency() {
-        return this.cryptocurrencyService;
-    }
+    public cryptocurrency: CryptocurrencyService;
 
     /**
      * Invoice API
      */
-    public get invoice() {
-        return this.invoiceService;
+    public invoice: InvoiceService;
+
+    /**
+     * Product API
+     */
+    public product: ProductService;
+
+    constructor(options: ClientOptions = {}) {
+        const apiBase = options.apiBase || 'https://api.simplepay.ai';
+
+        this.currency = new CurrencyService(`${apiBase}/currency`);
+        this.cryptocurrency = new CryptocurrencyService(`${apiBase}/cryptocurrency`);
+        this.invoice = new InvoiceService(`${apiBase}/invoice`, options.apiKey);
+        this.product = new ProductService(`${apiBase}/product`);
     }
 }
