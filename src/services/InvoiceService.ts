@@ -28,8 +28,8 @@ export default class InvoiceService extends BaseService {
     /**
      * Get invoice by ID
      */
-    public async get(id: string): Promise<Invoice> {
-        const response = await this.request('GET', `/${id}`);
+    public async get(id: string, app: boolean = false): Promise<Invoice> {
+        const response = await this.request('GET', `/${id}?app=${app}`);
 
         if (!response.ok) {
             throw new HttpError(response.status);
