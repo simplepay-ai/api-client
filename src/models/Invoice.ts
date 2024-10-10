@@ -1,4 +1,4 @@
-import { Cryptocurrency, Currency, Network, Product } from './';
+import { App, Cryptocurrency, Currency, Network, Product } from './';
 
 export enum InvoiceStatus {
     /**
@@ -196,4 +196,11 @@ export default interface Invoice {
      * Invoice products
      */
     products: InvoiceProduct[];
+
+    /**
+     * App this invoice related to
+     *
+     * To get invoice with this field, pass `app: true` to `invoice.get` method
+     */
+    app?: App;
 }
