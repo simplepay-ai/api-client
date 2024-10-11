@@ -1,12 +1,15 @@
 import camelcaseKeys from 'camelcase-keys';
 import decamelizeKeys from 'decamelize-keys';
 
+type Fetch = typeof fetch;
+
 export default abstract class BaseService {
     private readonly CSRF_TOKEN_HEADER: string = 'X-Csrf-Token';
 
     private csrfToken: string | null = null;
 
     constructor(
+        protected fetch: Fetch,
         protected apiBase: string,
         protected apiKey: string | null = null
     ) {}
@@ -33,7 +36,7 @@ export default abstract class BaseService {
             headers['Authorization'] = `Bearer ${this.apiKey}`;
         }
 
-        const response = await fetch(`${this.apiBase}${path || ''}`, {
+        const response = await this.fetch(`${this.apiBase}${path || ''}`, {
             credentials: 'include',
             method,
             headers,

@@ -1,5 +1,7 @@
 import { CryptocurrencyService, CurrencyService, InvoiceService, ProductService } from './services';
 
+type Fetch = typeof fetch;
+
 export interface ClientOptions {
     /**
      * API base
@@ -16,6 +18,11 @@ export interface ClientOptions {
      * this parameter should only be set when using Client on server-side
      */
     apiKey?: string;
+
+    /**
+     * Fetch implementation
+     */
+    fetch?: Fetch;
 }
 
 export class Client {
@@ -41,10 +48,11 @@ export class Client {
 
     constructor(options: ClientOptions = {}) {
         const apiBase = options.apiBase || 'https://api.simplepay.ai';
+        const fetchClient = options.fetch || fetch;
 
-        this.currency = new CurrencyService(`${apiBase}/currency`);
-        this.cryptocurrency = new CryptocurrencyService(`${apiBase}/cryptocurrency`);
-        this.invoice = new InvoiceService(`${apiBase}/invoice`, options.apiKey);
-        this.product = new ProductService(`${apiBase}/product`);
+        this.currency = new CurrencyService(fetchClient, `${apiBase}/currency`);
+        this.cryptocurrency = new CryptocurrencyService(fetchClient, `${apiBase}/cryptocurrency`);
+        this.invoice = new InvoiceService(fetchClient, `${apiBase}/invoice`, options.apiKey);
+        this.product = new ProductService(fetchClient, `${apiBase}/product`);
     }
 }
