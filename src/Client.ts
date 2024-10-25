@@ -1,4 +1,10 @@
-import { CryptocurrencyService, CurrencyService, InvoiceService, ProductService } from './services';
+import {
+    AppService,
+    CryptocurrencyService,
+    CurrencyService,
+    InvoiceService,
+    ProductService
+} from './services';
 
 type Fetch = typeof fetch;
 
@@ -27,6 +33,11 @@ export interface ClientOptions {
 
 export class Client {
     /**
+     * App API
+     */
+    public app: AppService;
+
+    /**
      * Fiat currency API
      */
     public currency: CurrencyService;
@@ -48,11 +59,12 @@ export class Client {
 
     constructor(options: ClientOptions = {}) {
         const apiBase = options.apiBase || 'https://api.simplepay.ai';
-        const fetchClient = options.fetch || fetch;
+        const fetchApi = options.fetch || fetch;
 
-        this.currency = new CurrencyService(fetchClient, `${apiBase}/currency`);
-        this.cryptocurrency = new CryptocurrencyService(fetchClient, `${apiBase}/cryptocurrency`);
-        this.invoice = new InvoiceService(fetchClient, `${apiBase}/invoice`, options.apiKey);
-        this.product = new ProductService(fetchClient, `${apiBase}/product`);
+        this.app = new AppService(fetchApi, `${apiBase}/app`);
+        this.currency = new CurrencyService(fetchApi, `${apiBase}/currency`);
+        this.cryptocurrency = new CryptocurrencyService(fetchApi, `${apiBase}/cryptocurrency`);
+        this.invoice = new InvoiceService(fetchApi, `${apiBase}/invoice`, options.apiKey);
+        this.product = new ProductService(fetchApi, `${apiBase}/product`);
     }
 }
