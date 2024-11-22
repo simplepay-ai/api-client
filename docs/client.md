@@ -21,20 +21,11 @@ try {
         // ID of end customer, who makes the payment
         clientId: '46778124-f9e0-4eba-ae1a-ecd5c0d9e90b',
 
-        // Wallet address from which customer made payment
-        from: '0x41ce73496136A0072013B9187550e30841eDeD74',
-
-        // Cryptocurrency symbol
-        cryptocurrency: 'USDT',
-
-        // Network symbol
-        network: 'ethereum',
-
         // Fiat currency symbol (ISO 4217 alphabetic code)
         currency: 'USD',
 
-        // Price in fiat currency
-        price: 500
+        // Total in fiat currency
+        total: 500
     });
 
     console.log(invoice);

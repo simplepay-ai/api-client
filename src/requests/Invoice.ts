@@ -46,27 +46,6 @@ export type InvoiceCreateRequest = {
     clientId: string;
 
     /**
-     * Wallet address from which customer made payment
-     *
-     * @example '0x41ce73496136A0072013B9187550e30841eDeD74'
-     */
-    from: string;
-
-    /**
-     * Cryptocurrency symbol
-     *
-     * @example 'USDT'
-     */
-    cryptocurrency: string;
-
-    /**
-     * Network symbol
-     *
-     * @example 'ethereum'
-     */
-    network: string;
-
-    /**
      * Fiat currency symbol (ISO 4217 alphabetic code)
      *
      * @example 'USD'
@@ -75,11 +54,11 @@ export type InvoiceCreateRequest = {
     currency: string;
 
     /**
-     * Price in fiat currency
+     * Total in fiat currency
      *
      * @example 500
      */
-    price?: number;
+    total?: number;
 
     /**
      * Custom data attached to invoice
@@ -101,11 +80,8 @@ export type InvoiceCreateErrors = {
     type?: 'required' | 'oneof';
     parentId?: 'uuid4';
     clientId?: 'required' | 'ascii' | 'max' | 'invalid';
-    from?: 'required' | 'alphanum' | 'invalid';
-    cryptocurrency?: 'required' | 'alpha' | 'uppercase' | 'invalid';
-    network?: 'required' | 'alpha' | 'lowercase' | 'invalid';
     currency?: 'required' | 'alpha' | 'uppercase' | 'invalid';
-    price?: 'required_without' | 'numeric' | 'gte' | 'lte';
+    total?: 'required_without' | 'numeric' | 'gte' | 'lte';
     payload?: 'len';
     products?: 'required_without' | 'min' | 'max' | 'invalid';
 };

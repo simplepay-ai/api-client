@@ -52,23 +52,34 @@ Blockchain network
 
 ## `Invoice`
 
+| Field       | Type                       | Example                                | Description                               |
+| :---------- | :------------------------- | :------------------------------------- | :---------------------------------------- |
+| `id`        | `string`                   | `6ef3cc15-24ae-4192-9744-a9017ed153cc` | Invoice ID                                |
+| `parentId`  | `string` or `null`         | `dd90187e-d1d0-405f-bf2f-242c15403297` | Parent invoice ID                         |
+| `clientId`  | `string`                   | `46778124-f9e0-4eba-ae1a-ecd5c0d9e90b` | ID of end customer, who makes the payment |
+| `total`     | `string`                   | `500.00`                               | Invoice total in fiat currency            |
+| `paid`      | `string`                   | `499.21`                               | Invoice paid amount in fiat currency      |
+| `type`      | `enum<payment>`            | `payment`                              | Invoice type                              |
+| `status`    | `InvoiceStatus`            | `success`                              | Invoice status                            |
+| `createdAt` | `string`                   | `2024-07-31T00:48:53Z`                 | Invoice creation timestamp                |
+| `updatedAt` | `string`                   | `2024-07-31T00:49:28Z`                 | Invoice update timestamp                  |
+| `currency`  | [`Currency`](#currency)    | See [`Currency`](#currency)            | Invoice fiat currency                     |
+| `payload`   | `InvoicePayload` or `null` | `{ someKey: 'someValue' }`             | Custom data attached to invoice           |
+
+## `Transaction`
+
 | Field            | Type                                | Example                                                              | Description                                     |
 | :--------------- | :---------------------------------- | :------------------------------------------------------------------- | :---------------------------------------------- |
-| `id`             | `string`                            | `6ef3cc15-24ae-4192-9744-a9017ed153cc`                               | Invoice ID                                      |
-| `parentId`       | `string` or `null`                  | `dd90187e-d1d0-405f-bf2f-242c15403297`                               | Parent invoice ID                               |
-| `clientId`       | `string`                            | `46778124-f9e0-4eba-ae1a-ecd5c0d9e90b`                               | ID of end customer, who makes the payment       |
+| `id`             | `string`                            | `1b87022b-e14f-4325-9317-732663ce900d`                               | Transaction ID                                  |
 | `from`           | `string`                            | `0x41ce73496136A0072013B9187550e30841eDeD74`                         | Wallet address from which customer made payment |
 | `to`             | `string`                            | `0x1105F97fBAB9674Ef069331F2b48E9B870ed9Adc`                         | Wallet address of payment recipient             |
 | `amount`         | `string`                            | `501.723934`                                                         | Invoice amount in cryptocurrency                |
-| `price`          | `string`                            | `500.00`                                                             | Invoice price in fiat currency                  |
-| `type`           | `enum<payment>`                     | `payment`                                                            | Invoice type                                    |
-| `status`         | `InvoiceStatus`                     | `success`                                                            | Invoice status                                  |
-| `txHash`         | `string` or `null`                  | `0xe9e91f1ee4b56c0df2e9f06c2b8c27c6076195a88a7b8537ba8313d80e6f124e` | Transaction hash                                |
-| `txBlock`        | `number` or `null`                  | `1000000`                                                            | Block number                                    |
-| `createdAt`      | `string`                            | `2024-07-31T00:48:53Z`                                               | Invoice creation timestamp                      |
-| `updatedAt`      | `string`                            | `2024-07-31T00:49:28Z`                                               | Invoice update timestamp                        |
-| `expireAt`       | `string`                            | `2024-07-31T01:14:28Z`                                               | Invoice expiration timestamp                    |
-| `cryptocurrency` | [`Cryptocurrency`](#cryptocurrency) | See [`Cryptocurrency`](#cryptocurrency)                              | Invoice cryptocurrency                          |
-| `network`        | [`Network`](#network)               | See [`Network`](#network)                                            | Invoice network                                 |
-| `currency`       | [`Currency`](#currency)             | See [`Currency`](#currency)                                          | Invoice fiat currency                           |
-| `payload`        | `InvoicePayload` or `null`          | `{ someKey: 'someValue' }`                                           | Custom data attached to invoice                 |
+| `rate`           | `string`                            | `204.028345`                                                         | Exchange rate to fiat currency                  |
+| `hash`           | `string` or `null`                  | `0xe9e91f1ee4b56c0df2e9f06c2b8c27c6076195a88a7b8537ba8313d80e6f124e` | Transaction hash                                |
+| `block`          | `number` or `null`                  | `1000000`                                                            | Block number                                    |
+| `status`         | `TransactionStatus`                 | `success`                                                            | Transaction status                              |
+| `createdAt`      | `string`                            | `2024-07-31T00:48:53Z`                                               | Transaction creation timestamp                  |
+| `updatedAt`      | `string`                            | `2024-07-31T00:49:28Z`                                               | Transaction update timestamp                    |
+| `expireAt`       | `string`                            | `2024-07-31T01:14:28Z`                                               | Transaction expiration timestamp                |
+| `cryptocurrency` | [`Cryptocurrency`](#cryptocurrency) | See [`Cryptocurrency`](#cryptocurrency)                              | Transaction cryptocurrency                      |
+| `network`        | [`Network`](#network)               | See [`Network`](#network)                                            | Transaction network                             |

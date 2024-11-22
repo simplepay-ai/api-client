@@ -10,7 +10,7 @@ export default class InvoiceService extends BaseService {
      * Create invoice
      */
     public async create(request: InvoiceCreateRequest): Promise<Invoice> {
-        const response = await this.request('POST', null, this.toSnakeCase(request));
+        const response = await this.request('POST', '?v=2', this.toSnakeCase(request));
 
         if (!response.ok && response.status !== StatusCodes.BAD_REQUEST) {
             throw new HttpError(response.status);
@@ -29,7 +29,7 @@ export default class InvoiceService extends BaseService {
      * Get invoice by ID
      */
     public async get(id: string, app: boolean = false): Promise<Invoice> {
-        const response = await this.request('GET', `/${id}?app=${app}`);
+        const response = await this.request('GET', `/${id}?v=2&app=${app}`);
 
         if (!response.ok) {
             throw new HttpError(response.status);
@@ -44,7 +44,7 @@ export default class InvoiceService extends BaseService {
      * Cancel invoice by ID
      */
     public async cancel(id: string): Promise<Invoice> {
-        const response = await this.request('DELETE', `/${id}`);
+        const response = await this.request('DELETE', `/${id}?v=2`);
 
         if (!response.ok) {
             throw new HttpError(response.status);

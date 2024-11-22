@@ -15,7 +15,7 @@ export default class CryptocurrencyService extends BaseService {
             query.append(key, value.toString());
         }
 
-        const response = await this.request('GET', `?${query.toString()}`);
+        const response = await this.request('GET', `?v=1&${query.toString()}`);
 
         if (!response.ok && response.status !== StatusCodes.BAD_REQUEST) {
             throw new HttpError(response.status);

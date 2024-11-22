@@ -4,7 +4,7 @@ import { HttpError } from '../errors';
 
 export default class ProductService extends BaseService {
     public async list(appId: string): Promise<Product[]> {
-        const response = await this.request('GET', `?app_id=${appId}`);
+        const response = await this.request('GET', `?v=1&app_id=${appId}`);
 
         if (!response.ok) {
             throw new HttpError(response.status);
@@ -16,7 +16,7 @@ export default class ProductService extends BaseService {
     }
 
     public async get(id: string): Promise<Product> {
-        const response = await this.request('GET', `/${id}`);
+        const response = await this.request('GET', `/${id}?v=1`);
 
         if (!response.ok) {
             throw new HttpError(response.status);

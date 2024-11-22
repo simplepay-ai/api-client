@@ -2,25 +2,14 @@ import { App, Cryptocurrency, Currency, Network, Product } from './';
 
 export enum InvoiceStatus {
     /**
-     * Invoice created and preparing for future processing
+     * Invoice created
      */
-    Created = 'created',
+    Active = 'active',
 
     /**
-     * System is ready for accepting payment
-     *
-     * End customer allowed to send cryptocurrency
+     * Invoice closed (without specific reason)
      */
-    Processing = 'processing',
-
-    /**
-     * Transaction found in blockchain
-     *
-     * System awaiting for some amount of new blocks to be mined for safety
-     *
-     * `txHash` and `txBlock` fields in invoice was filled on this status
-     */
-    Confirming = 'confirming',
+    Closed = 'closed',
 
     /**
      * Invoice succeeded
@@ -30,25 +19,11 @@ export enum InvoiceStatus {
     Success = 'success',
 
     /**
-     * Invoice rejected
-     *
-     * Transaction was failed, or another issue was happen
-     */
-    Rejected = 'rejected',
-
-    /**
      * Invoice canceled
      *
      * By end customer or merchant
      */
-    Canceled = 'canceled',
-
-    /**
-     * Invoice expired
-     *
-     * End customer does not send transaction in time
-     */
-    Expired = 'expired'
+    Canceled = 'canceled'
 }
 
 export interface InvoicePayload {
@@ -92,32 +67,18 @@ export default interface Invoice {
     clientId: string;
 
     /**
-     * Wallet address from which customer made payment
-     *
-     * @example '0x41ce73496136A0072013B9187550e30841eDeD74'
-     */
-    from: string;
-
-    /**
-     * Wallet address of payment recipient
-     *
-     * @example '0x1105F97fBAB9674Ef069331F2b48E9B870ed9Adc'
-     */
-    to: string;
-
-    /**
-     * Invoice amount in cryptocurrency
-     *
-     * @example '501.723934'
-     */
-    amount: string;
-
-    /**
-     * Invoice price in fiat currency
+     * Invoice total in fiat currency
      *
      * @example '500.00'
      */
-    price: string;
+    total: string;
+
+    /**
+     * Invoice paid amount in fiat currency
+     *
+     * @example '499.21'
+     */
+    paid: string;
 
     /**
      * Invoice type
@@ -134,20 +95,6 @@ export default interface Invoice {
     status: InvoiceStatus;
 
     /**
-     * Transaction hash
-     *
-     * @example '0xe9e91f1ee4b56c0df2e9f06c2b8c27c6076195a88a7b8537ba8313d80e6f124e'
-     */
-    txHash: string | null;
-
-    /**
-     * Block number
-     *
-     * @example 1000000
-     */
-    txBlock: number | null;
-
-    /**
      * Invoice creation timestamp
      *
      * @example '2024-07-31T00:48:53Z'
@@ -160,23 +107,6 @@ export default interface Invoice {
      * @example '2024-07-31T00:49:28Z'
      */
     updatedAt: string;
-
-    /**
-     * Invoice expiration timestamp
-     *
-     * @example '2024-07-31T01:14:28Z'
-     */
-    expireAt: string;
-
-    /**
-     * Invoice cryptocurrency
-     */
-    cryptocurrency: Cryptocurrency;
-
-    /**
-     * Invoice network
-     */
-    network: Network;
 
     /**
      * Invoice fiat currency

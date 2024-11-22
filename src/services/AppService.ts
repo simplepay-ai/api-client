@@ -7,7 +7,7 @@ type Fetch = typeof fetch;
 
 export default class AppService extends BaseService {
     public async get(id: string): Promise<App> {
-        const response = await this.request('GET', `/${id}`);
+        const response = await this.request('GET', `/${id}?v=1`);
 
         if (!response.ok) {
             throw new HttpError(response.status);
