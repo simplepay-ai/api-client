@@ -3,7 +3,8 @@ import {
     CryptocurrencyService,
     CurrencyService,
     InvoiceService,
-    ProductService
+    ProductService,
+    TransactionService
 } from './services';
 
 type Fetch = typeof fetch;
@@ -57,6 +58,11 @@ export class Client {
      */
     public product: ProductService;
 
+    /**
+     * Transaction API
+     */
+    public transaction: TransactionService;
+
     constructor(options: ClientOptions = {}) {
         const apiBase = options.apiBase || 'https://api.simplepay.ai';
         const fetchApi = options.fetch || fetch;
@@ -66,5 +72,6 @@ export class Client {
         this.cryptocurrency = new CryptocurrencyService(fetchApi, `${apiBase}/cryptocurrency`);
         this.invoice = new InvoiceService(fetchApi, `${apiBase}/invoice`, options.apiKey);
         this.product = new ProductService(fetchApi, `${apiBase}/product`);
+        this.transaction = new TransactionService(fetchApi, `${apiBase}/transaction`);
     }
 }

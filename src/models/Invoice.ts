@@ -1,4 +1,4 @@
-import { App, Cryptocurrency, Currency, Network, Product } from './';
+import { App, Currency, Product } from './';
 
 export enum InvoiceStatus {
     /**
