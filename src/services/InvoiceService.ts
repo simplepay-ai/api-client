@@ -1,5 +1,10 @@
 import type { Invoice } from '../models';
-import type { InvoiceCreateErrors, InvoiceCreateRequest, InvoiceListErrors } from '../requests';
+import type {
+    InvoiceCreateErrors,
+    InvoiceCreateRequest,
+    InvoiceListErrors,
+    InvoiceListRequest
+} from '../requests';
 import { createHmac } from 'crypto';
 import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
@@ -58,7 +63,7 @@ export default class InvoiceService extends BaseService {
     /**
      * List invoices
      */
-    public async list(request: string): Promise<Invoice[]> {
+    public async list(request: InvoiceListRequest = {}): Promise<Invoice[]> {
         const query = new URLSearchParams();
 
         for (const [key, value] of Object.entries(this.toSnakeCase(request))) {
