@@ -56,6 +56,21 @@ export default class InvoiceService extends BaseService {
     }
 
     /**
+     * List invoices
+     */
+    public async list(appId: string): Promise<Invoice[]> {
+        const response = await this.request('GET', `?v=2&app_id=${appId}`);
+
+        if (!response.ok) {
+            throw new HttpError(response.status);
+        }
+
+        const data = await response.json();
+
+        return this.toCamelCase(data) as Invoice[];
+    }
+
+    /**
      * Get invoice from webhook
      *
      * @param body Raw webhook body
