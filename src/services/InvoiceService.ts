@@ -1,5 +1,5 @@
 import type { Invoice } from '../models';
-import type { InvoiceCreateErrors, InvoiceCreateRequest } from '../requests';
+import type { InvoiceCreateErrors, InvoiceCreateRequest, InvoiceListErrors } from '../requests';
 import { createHmac } from 'crypto';
 import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
@@ -58,16 +58,26 @@ export default class InvoiceService extends BaseService {
     /**
      * List invoices
      */
-    public async list(appId: string): Promise<Invoice[]> {
-        const response = await this.request('GET', `?v=2&app_id=${appId}`);
+    public async list(request: string): Promise<Invoice[]> {
+        const query = new URLSearchParams();
 
-        if (!response.ok) {
+        for (const [key, value] of Object.entries(this.toSnakeCase(request))) {
+            query.append(key, value.toString());
+        }
+
+        const response = await this.request('GET', `?v=2&${query.toString()}`);
+
+        if (!response.ok && response.status !== StatusCodes.BAD_REQUEST) {
             throw new HttpError(response.status);
         }
 
-        const data = await response.json();
+        const data = this.toCamelCase(await response.json());
 
-        return this.toCamelCase(data) as Invoice[];
+        if (response.status === StatusCodes.BAD_REQUEST) {
+            throw new ValidationError<InvoiceListErrors>(data);
+        }
+
+        return data as Invoice[];
     }
 
     /**
