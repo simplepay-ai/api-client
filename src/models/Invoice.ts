@@ -2,7 +2,7 @@ import { App, Currency, Product } from './';
 
 export enum InvoiceStatus {
     /**
-     * Invoice created
+     * Invoice active
      */
     Active = 'active',
 
@@ -128,7 +128,7 @@ export default interface Invoice {
     products: InvoiceProduct[];
 
     /**
-     * App this invoice related to
+     * App invoice related to
      *
      * To get invoice with this field, pass `app: true` to `invoice.get` method
      */

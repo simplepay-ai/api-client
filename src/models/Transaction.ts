@@ -56,6 +56,13 @@ export default interface Transaction {
     id: string;
 
     /**
+     * Invoice ID
+     *
+     * @example '6ef3cc15-24ae-4192-9744-a9017ed153cc'
+     */
+    invoiceId: string;
+
+    /**
      * Wallet address from which customer made payment
      *
      * @example '0x41ce73496136A0072013B9187550e30841eDeD74'
