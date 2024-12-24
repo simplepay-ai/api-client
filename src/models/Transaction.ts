@@ -1,5 +1,52 @@
 import { Cryptocurrency, Network } from './';
 
+export enum TransactionEventType {
+    /**
+     * Transaction created and preparing for future processing
+     */
+    Created = 'created',
+
+    /**
+     * System is ready for accepting payment
+     *
+     * End customer allowed to send cryptocurrency
+     */
+    Processing = 'processing',
+
+    /**
+     * Transaction found in blockchain
+     *
+     * System awaiting for some amount of new blocks to be mined for safety
+     *
+     * `hash` and `block` fields in transaction was filled on this event
+     */
+    Confirming = 'confirming',
+
+    /**
+     * Transaction succeeded
+     */
+    Success = 'success',
+
+    /**
+     * Transaction rejected
+     *
+     * Transaction was failed, or another issue was happen
+     */
+    Rejected = 'rejected',
+
+    /**
+     * Transaction canceled
+     */
+    Canceled = 'canceled',
+
+    /**
+     * Transaction expired
+     *
+     * End customer does not send transaction in time
+     */
+    Expired = 'expired'
+}
+
 export enum TransactionStatus {
     /**
      * Transaction created and preparing for future processing

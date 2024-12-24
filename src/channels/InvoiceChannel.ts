@@ -1,9 +1,8 @@
-import type { Invoice } from '../models';
+import type { Invoice, InvoiceEventType } from '../models';
 import BaseChannel from '../BaseChannel';
-import { InvoiceStatus } from '../models';
 
 export default class InvoiceChannel extends BaseChannel {
-    public on(status: InvoiceStatus, callback: (invoice: Invoice) => void): void {
-        this.channel.bind(status, (i: object) => callback(this.toCamelCase(i) as Invoice));
+    public on(eventType: InvoiceEventType, callback: (invoice: Invoice) => void): void {
+        this.channel.bind(eventType, (i: object) => callback(this.toCamelCase(i) as Invoice));
     }
 }

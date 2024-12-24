@@ -1,5 +1,24 @@
 import { App, Currency, Product } from './';
 
+export enum InvoiceEventType {
+    /**
+     * Invoice created
+     */
+    Created = 'created',
+
+    /**
+     * Invoice succeeded
+     */
+    Success = 'success',
+
+    /**
+     * Invoice canceled
+     *
+     * By end customer or merchant
+     */
+    Canceled = 'canceled'
+}
+
 export enum InvoiceStatus {
     /**
      * Invoice active
