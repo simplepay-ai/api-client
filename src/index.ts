@@ -5,3 +5,4 @@ export * from './services';
 export * from './channels';
 export * from './Client';
 export * from './WsClient';
+export * from './Webhook';

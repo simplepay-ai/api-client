@@ -7,3 +7,4 @@ export { default as Invoice } from './Invoice';
 export { default as Transaction } from './Transaction';
 export * from './Invoice';
 export * from './Transaction';
+export * from './WebhookEvent';
