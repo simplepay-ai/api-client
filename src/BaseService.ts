@@ -43,7 +43,9 @@ export default abstract class BaseService {
             body: bodyInit
         });
 
-        this.state.csrfToken = response.headers.get(this.CSRF_TOKEN_HEADER);
+        if (response.headers.has(this.CSRF_TOKEN_HEADER)) {
+            this.state.csrfToken = response.headers.get(this.CSRF_TOKEN_HEADER);
+        }
 
         return response;
     }
