@@ -32,6 +32,10 @@ export interface ClientOptions {
     fetch?: Fetch;
 }
 
+export interface ClientState {
+    csrfToken: string | null;
+}
+
 export class Client {
     /**
      * App API
@@ -63,15 +67,30 @@ export class Client {
      */
     public transaction: TransactionService;
 
+    private state: ClientState;
+
     constructor(options: ClientOptions = {}) {
         const apiBase = options.apiBase || 'https://api.simplepay.ai';
         const fetchApi = options.fetch || fetch;
 
-        this.app = new AppService(fetchApi, `${apiBase}/app`);
-        this.currency = new CurrencyService(fetchApi, `${apiBase}/currency`);
-        this.cryptocurrency = new CryptocurrencyService(fetchApi, `${apiBase}/cryptocurrency`);
-        this.invoice = new InvoiceService(fetchApi, `${apiBase}/invoice`, options.apiKey);
-        this.product = new ProductService(fetchApi, `${apiBase}/product`);
-        this.transaction = new TransactionService(fetchApi, `${apiBase}/transaction`);
+        this.state = {
+            csrfToken: null
+        };
+
+        this.app = new AppService(this.state, fetchApi, `${apiBase}/app`);
+        this.currency = new CurrencyService(this.state, fetchApi, `${apiBase}/currency`);
+        this.cryptocurrency = new CryptocurrencyService(
+            this.state,
+            fetchApi,
+            `${apiBase}/cryptocurrency`
+        );
+        this.invoice = new InvoiceService(
+            this.state,
+            fetchApi,
+            `${apiBase}/invoice`,
+            options.apiKey
+        );
+        this.product = new ProductService(this.state, fetchApi, `${apiBase}/product`);
+        this.transaction = new TransactionService(this.state, fetchApi, `${apiBase}/transaction`);
     }
 }

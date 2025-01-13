@@ -1,3 +1,4 @@
+import type { ClientState } from './';
 import camelcaseKeys from 'camelcase-keys';
 import decamelizeKeys from 'decamelize-keys';
 
@@ -6,9 +7,8 @@ type Fetch = typeof fetch;
 export default abstract class BaseService {
     private readonly CSRF_TOKEN_HEADER: string = 'X-Csrf-Token';
 
-    private csrfToken: string | null = null;
-
     constructor(
+        protected state: ClientState,
         protected fetch: Fetch,
         protected apiBase: string,
         protected apiKey: string | null = null
@@ -21,8 +21,8 @@ export default abstract class BaseService {
     ): Promise<Response> {
         const headers: HeadersInit = {};
 
-        if (this.csrfToken != null) {
-            headers[this.CSRF_TOKEN_HEADER] = this.csrfToken;
+        if (this.state.csrfToken != null) {
+            headers[this.CSRF_TOKEN_HEADER] = this.state.csrfToken;
         }
 
         let bodyInit: BodyInit | null = null;
@@ -43,7 +43,7 @@ export default abstract class BaseService {
             body: bodyInit
         });
 
-        this.csrfToken = response.headers.get(this.CSRF_TOKEN_HEADER);
+        this.state.csrfToken = response.headers.get(this.CSRF_TOKEN_HEADER);
 
         return response;
     }
