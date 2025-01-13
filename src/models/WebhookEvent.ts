@@ -96,7 +96,6 @@ export type WebhookEvent = {
               | WebhookEventType.TransactionConfirming
               | WebhookEventType.TransactionProcessing
               | WebhookEventType.TransactionSuccess
-              | WebhookEventType.TransactionRejected
               | WebhookEventType.TransactionRejected;
 
           /**

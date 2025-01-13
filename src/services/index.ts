@@ -1,4 +1,5 @@
 export { default as AppService } from './AppService';
+export { default as AppCryptocurrencyService } from './AppCryptocurrencyService';
 export { default as CurrencyService } from './CurrencyService';
 export { default as CryptocurrencyService } from './CryptocurrencyService';
 export { default as InvoiceService } from './InvoiceService';
