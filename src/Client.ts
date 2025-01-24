@@ -4,7 +4,8 @@ import {
     CurrencyService,
     InvoiceService,
     ProductService,
-    TransactionService
+    TransactionService,
+    UserService
 } from './services';
 
 type Fetch = typeof fetch;
@@ -67,6 +68,11 @@ export class Client {
      */
     public transaction: TransactionService;
 
+    /**
+     * User API
+     */
+    public user: UserService;
+
     private state: ClientState;
 
     constructor(options: ClientOptions = {}) {
@@ -92,5 +98,6 @@ export class Client {
         );
         this.product = new ProductService(this.state, fetchApi, `${apiBase}/product`);
         this.transaction = new TransactionService(this.state, fetchApi, `${apiBase}/transaction`);
+        this.user = new UserService(this.state, fetchApi, `${apiBase}/user`);
     }
 }

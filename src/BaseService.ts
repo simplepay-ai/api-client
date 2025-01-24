@@ -36,7 +36,13 @@ export default abstract class BaseService {
             headers['Authorization'] = `Bearer ${this.apiKey}`;
         }
 
-        const response = await this.fetch.bind(window)(`${this.apiBase}${path || ''}`, {
+        let fetch = this.fetch;
+
+        if (window !== undefined) {
+            fetch = this.fetch.bind(window);
+        }
+
+        const response = await fetch(`${this.apiBase}${path || ''}`, {
             credentials: 'include',
             method,
             headers,

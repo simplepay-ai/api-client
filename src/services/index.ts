@@ -5,3 +5,7 @@ export { default as CryptocurrencyService } from './CryptocurrencyService';
 export { default as InvoiceService } from './InvoiceService';
 export { default as ProductService } from './ProductService';
 export { default as TransactionService } from './TransactionService';
+export { default as UserService } from './UserService';
+export { default as UserBillingService } from './UserBillingService';
+export { default as UserInvoiceService } from './UserInvoiceService';
+export { default as UserPATService } from './UserPATService';
