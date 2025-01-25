@@ -43,3 +43,7 @@ export type TransactionCreateErrors = {
     cryptocurrency?: 'required' | 'alpha' | 'uppercase' | 'invalid';
     network?: 'required' | 'alpha' | 'lowercase' | 'invalid';
 };
+
+export type TransactionListErrors = {
+    invoiceId?: 'required' | 'uuid4';
+};

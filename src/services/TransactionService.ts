@@ -2,6 +2,7 @@ import type { Transaction } from '../models';
 import type {
     TransactionCreateErrors,
     TransactionCreateRequest,
+    TransactionListErrors,
     TransactionListRequest
 } from '../requests';
 import { StatusCodes } from 'http-status-codes';
@@ -75,6 +76,10 @@ export default class TransactionService extends BaseService {
         }
 
         const data = await response.json();
+
+        if (response.status === StatusCodes.BAD_REQUEST) {
+            throw new ValidationError<TransactionListErrors>(data);
+        }
 
         return this.toCamelCase(data) as Transaction[];
     }
