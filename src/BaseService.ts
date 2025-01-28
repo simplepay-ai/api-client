@@ -38,7 +38,7 @@ export default abstract class BaseService {
 
         let fetch = this.fetch;
 
-        if (window !== undefined) {
+        if (typeof window !== 'undefined') {
             fetch = this.fetch.bind(window);
         }
 
