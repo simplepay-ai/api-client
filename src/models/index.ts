@@ -6,6 +6,7 @@ export { default as Network } from './Network';
 export { default as PAT } from './PAT';
 export { default as Product } from './Product';
 export { default as Transaction } from './Transaction';
+export * from './App';
 export * from './Invoice';
 export * from './PAT';
 export * from './Transaction';

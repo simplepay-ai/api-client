@@ -1,4 +1,4 @@
-import { App, Currency, Product } from './';
+import { App, Currency, Product, PublicApp } from './';
 
 export enum InvoiceEventType {
     /**
@@ -153,3 +153,10 @@ export default interface Invoice {
      */
     app?: App;
 }
+
+export type UserInvoice = Omit<Invoice, 'app'> & {
+    /**
+     * App invoice related to
+     */
+    app?: PublicApp;
+};

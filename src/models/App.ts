@@ -1,4 +1,9 @@
-export default interface App {
+export enum AppEnvironment {
+    Development = 'development',
+    Production = 'production'
+}
+
+export interface PublicApp {
     /**
      * App ID
      *
@@ -38,4 +43,30 @@ export default interface App {
      * @format URL
      */
     url: string;
+}
+
+export default interface App extends PublicApp {
+    /**
+     * App Token
+     */
+    token: string;
+
+    /**
+     * App Environment
+     */
+    environment: AppEnvironment;
+
+    /**
+     * App creation timestamp
+     *
+     * @example '2024-07-31T00:48:53Z'
+     */
+    createdAt: string;
+
+    /**
+     * App update timestamp
+     *
+     * @example '2024-07-31T00:49:28Z'
+     */
+    updatedAt: string | null;
 }

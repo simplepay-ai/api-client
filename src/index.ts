@@ -1,6 +1,7 @@
 export * from './errors';
 export * from './models';
 export * from './requests';
+export * from './responses';
 export * from './services';
 export * from './channels';
 export * from './Client';

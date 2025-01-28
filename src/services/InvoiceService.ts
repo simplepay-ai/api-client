@@ -1,13 +1,9 @@
 import type { Invoice } from '../models';
-import type {
-    InvoiceCreateErrors,
-    InvoiceCreateRequest,
-    InvoiceListErrors,
-    InvoiceListRequest
-} from '../requests';
+import type { InvoiceCreateRequest, InvoiceListRequest } from '../requests';
 import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
 import { HttpError, ValidationError } from '../errors';
+import { InvoiceCreateErrors, InvoiceListErrors } from '../responses';
 
 export default class InvoiceService extends BaseService {
     /**

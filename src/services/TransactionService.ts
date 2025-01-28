@@ -1,13 +1,9 @@
 import type { Transaction } from '../models';
-import type {
-    TransactionCreateErrors,
-    TransactionCreateRequest,
-    TransactionListErrors,
-    TransactionListRequest
-} from '../requests';
+import type { TransactionCreateRequest, TransactionListRequest } from '../requests';
 import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
 import { HttpError, ValidationError } from '../errors';
+import { TransactionCreateErrors, TransactionListErrors } from '../responses';
 
 export default class TransactionService extends BaseService {
     /**

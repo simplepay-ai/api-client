@@ -43,13 +43,18 @@ export type UserInvoiceListRequest = {
      * Results order direction
      */
     order?: 'asc' | 'desc';
+
+    /**
+     * Include app in response
+     */
+    app?: boolean;
 };
 
-export type UserInvoiceListErrors = {
-    appId?: 'uuid4';
-    status?: 'oneof';
-    createdAtGte?: 'datetime';
-    createdAtLte?: 'datetime';
-    orderBy?: 'oneof';
-    order?: 'oneof';
+export type UserInvoiceLinkRequest = {
+    /**
+     * Invoice ID
+     *
+     * @example '6ef3cc15-24ae-4192-9744-a9017ed153cc'
+     */
+    invoiceId: string;
 };

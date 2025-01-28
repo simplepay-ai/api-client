@@ -1,8 +1,9 @@
 import type { PAT } from '../models';
-import type { PATCreateErrors, PATCreateRequest } from '../requests';
+import type { PATCreateRequest } from '../requests';
 import { StatusCodes } from 'http-status-codes';
 import BaseService from '../BaseService';
 import { HttpError, ValidationError } from '../errors';
+import { PATCreateErrors } from '../responses';
 
 export default class UserPATService extends BaseService {
     public async list(): Promise<PAT[]> {
