@@ -8,5 +8,5 @@ export type UserInvoiceListErrors = {
 };
 
 export type UserInvoiceLinkErrors = {
-    invoiceId?: 'uuid4';
+    invoiceId?: 'required' | 'uuid4' | 'invalid' | 'linked';
 };
