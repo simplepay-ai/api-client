@@ -29,6 +29,7 @@ export interface PublicApp {
      * App image
      *
      * @format URL
+     * @example 'https://example.com/image.webp'
      */
     image: string | null;
 
@@ -41,6 +42,7 @@ export interface PublicApp {
      * App URL
      *
      * @format URL
+     * @example 'https://example.com'
      */
     url: string;
 }

@@ -40,6 +40,7 @@ export default interface Product {
      * Product image
      *
      * @format URL
+     * @example 'https://example.com/image.webp'
      */
     image: string | null;
 
