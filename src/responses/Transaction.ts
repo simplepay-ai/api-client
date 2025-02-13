@@ -1,7 +1,7 @@
 export type TransactionCreateErrors = {
     invoiceId?: 'required' | 'uuid4' | 'invalid';
     from?: 'required' | 'alphanum' | 'invalid';
-    cryptocurrency?: 'required' | 'alpha' | 'uppercase' | 'invalid';
+    cryptocurrency?: 'required' | 'alphanum' | 'uppercase' | 'invalid';
     network?: 'required' | 'alpha' | 'lowercase' | 'invalid';
 };
 
